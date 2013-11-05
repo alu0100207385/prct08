@@ -38,3 +38,88 @@ def pausa
       break
     end
 end
+
+#Ejecucion del programa principal
+def principal
+  op=0
+  while (op!=5)
+    op= menu1
+    case op
+      when 1
+	puts "CREAR MATRICES"
+	puts "Introduce la dimension de las matriz 1: "
+	print "Filas? "
+	STDOUT.flush
+	f=gets.chomp
+	print "Columnas? "
+	c=gets.chomp
+	a = Matriz.new(f.to_i,c.to_i)
+	puts a.to_s
+	a.introducir_datos
+	puts a.to_s
+	
+	puts "Introduce la dimension de las matriz 2: "
+	print "Filas? "
+	STDOUT.flush
+	f=gets.chomp
+	print "Columnas? "
+	c=gets.chomp
+	b = Matriz.new(f.to_i,c.to_i)
+	puts b.to_s
+	b.introducir_datos
+	puts b.to_s
+      when 2
+	puts "GENERAR MATRICES CON VALORES ALEATORIOS"
+	puts "Introduce la dimension de la matriz 1: "
+	print "Filas? "
+	STDOUT.flush
+	f=gets.chomp
+	print "Columnas? "
+	c=gets.chomp
+	a = Matriz.new(f.to_i,c.to_i)
+	a.generar
+	puts a.to_s
+
+	puts "Introduce la dimension de la matriz 2: "
+	print "Filas? "
+	STDOUT.flush
+	f=gets.chomp
+	print "Columnas? "
+	c=gets.chomp
+	b = Matriz.new(f.to_i,c.to_i)
+	b.generar
+	puts b.to_s
+
+      when 3
+	  op2=0
+	  while (op2!=5)
+	    op2= menu2
+	    case op2
+	      when 1
+		puts "Suma"
+		pausa
+	      when 2
+		puts "Mutiplicacion por un escalar"
+		pausa
+
+	      when 3
+		puts "Traspuesta de matrices"
+		pausa
+	      when 4
+		puts "Determinante"
+		pausa
+	    end
+# 	    pausa
+	  end
+      when 4
+	puts "MOSTRAR"
+	puts "M1 = "
+	puts a.to_s
+	puts "M2 = "
+	puts b.to_s
+    end
+  pausa
+  end
+end
+
+principal

@@ -35,5 +35,31 @@ describe Matriz do
 #        (@m1==@m3.llenar([[1,2],[2,3]])).should eq(true)
      end
   end 
+
+  describe "# Operaciones de matrices: "do
+    it "- Se pueden sumar matrices" do
+      @m3 = Matriz.new(2,2)
+      @m3.llenar([[0,3],[4,-2]])
+      (@m1+@m2).should == @m3
+    end
+    it "- Se pueden restar matrices" do
+      @m3 = Matriz.new(2,2)
+      @m3.llenar([[2,1],[0,8]])
+      (@m1-@m2).should == @m3
+    end
+    it "- Se multiplica un escalar por una matriz" do
+      @m3 = Matriz.new(2,2)
+      @m3.llenar([[2,4],[4,6]])
+      (@m1*2).should == @m3
+    end
+    it "- Se multiplica una matriz por otra" do
+      @m3 = Matriz.new(2,2)
+      @m3.llenar([[3,-9],[4,-13]])
+      (@m1*@m2).should == @m3
+    end
+    it "- El metodo determinante"do
+      @m1.det==-1
+    end
+  end
   
 end
