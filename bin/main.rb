@@ -137,6 +137,20 @@ def principal
 
 	      when 3
 		puts "Traspuesta de matrices"
+		puts "M1"
+		puts a.to_s
+		puts "traspuesta M1"
+		puts "#{a.t.to_s}"
+		puts "M2"
+		puts b.to_s
+		puts "traspuesta M2"
+		puts "#{b.t.to_s}"
+
+		puts "Absoluto de una matriz"
+		puts "M1"
+		puts a.to_s
+		puts "absoluto de M1"
+		puts "#{a.abs.to_s}"
 		pausa
 
 	      when 4

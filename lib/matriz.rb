@@ -144,5 +144,24 @@ class Matriz
     end #if
   end
   
+  def t #traspuesta de una matriz
+    nueva = Matriz.new(self.col,self.fil)
+    for i in (0...nueva.fil)
+      for j in (0...nueva.col)
+	nueva.mat[i][j] = self.mat[j][i]
+      end
+    end
+    nueva
+  end
+  
+  def abs
+    for i in (0...self.fil)
+      for j in (0...self.col)
+	self.mat[i][j] = (self.mat[i][j]).abs
+      end
+    end
+    self
+  end
+  
   
 end
