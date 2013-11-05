@@ -24,13 +24,10 @@ Repositorio:
 ```
 
 Ficheros:
-
  - Gemfile
  - Guardfile
  - Rakefile
  - .travis.yml
- - Matriz_spec.rb
-
 
 Grupo (M-15)
 ============
