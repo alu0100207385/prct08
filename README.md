@@ -24,6 +24,10 @@ Repositorio:
 ```
 
 Ficheros:
+ - Gemfile
+ - Guardfile
+ - Rakefile
+ - .travis.yml
 
 Grupo (M-15)
 ============
