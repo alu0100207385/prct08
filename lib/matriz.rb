@@ -19,4 +19,31 @@ class Matriz
     puts "\n"
   end
 
+  def generar
+    @mat = Array.new(@fil) {Array.new(@col) {rand(-10..10)}}
+  end
+  
+  def llenar (other)
+    if other.is_a?(Array)
+      for i in (0...self.fil)
+	for j in (0...self.col)
+	  self.mat[i][j] = other[i][j]
+	end
+      end
+    end
+  end
+  
+  def introducir_datos
+    puts "Rellene la matriz..."
+    for i in (0...self.fil)
+      for j in (0...self.col)
+	puts "casilla (#{i},#{j}): "
+	STDOUT.flush
+	dato=gets.chomp
+	self.mat[i][j]=dato.to_i
+      end
+    end
+  end
+  
+  
 end
