@@ -97,16 +97,54 @@ def principal
 	    case op2
 	      when 1
 		puts "Suma"
+		c = a+b
+		puts "M1 + M2 = M3"
+		puts a.to_s
+		puts "+" 
+		puts b.to_s
+		puts "="
+		puts c.to_s
+	
+		puts "Resta"
+		c = a-b
+		puts "M1 - M2 = M3"
+		puts a.to_s
+		puts "-" 
+		puts b.to_s
+		puts "="
+		puts c.to_s
 		pausa
 	      when 2
 		puts "Mutiplicacion por un escalar"
+		print "Numero a multiplicar?: "
+		STDOUT.flush
+		num=gets.chomp
+		num = num.to_i
+		c= a*num
+		puts "#{num.to_i} * M1 = M3"
+		puts a.to_s
+		puts c.to_s
+
+		puts "Multiplicacion"
+		c = a*b
+		puts "M1 * M2 = M3"
+		puts a.to_s
+		puts "*" 
+		puts b.to_s
+		puts "="
+		puts c.to_s
 		pausa
 
 	      when 3
 		puts "Traspuesta de matrices"
 		pausa
+
 	      when 4
 		puts "Determinante"
+		puts "Determinante"
+		puts "M1"
+		puts a.to_s
+		puts "determinante de M1= #{a.det}"
 		pausa
 	    end
 # 	    pausa
