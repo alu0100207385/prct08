@@ -20,7 +20,7 @@ rake thtml       # Ejecutar las espectativas de la clase Matriz version html
 
 Repositorio:
 ```
-???
+git@github.com:alu0100207385/prct08.git
 ```
 
 Ficheros:
@@ -29,7 +29,9 @@ Ficheros:
  - Guardfile
  - Rakefile
  - .travis.yml
- - Matriz_spec.rb
+ - /spec/matriz_spec.rb
+ - /lib/matriz.rb
+ - /bin/main.rb
 
 
 Grupo (M-15)
