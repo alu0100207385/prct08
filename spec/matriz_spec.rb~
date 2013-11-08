@@ -61,5 +61,19 @@ describe Matriz do
       @m1.det==-1
     end
   end
+
+  describe "# Otras operaciones" do
+    it "- Traspuesta de una matriz" do
+      @m1==@m1.t
+    end
+    it "- Metodo absoluto de una matriz" do
+      @m3 = Matriz.new(2,2)
+      @m3.llenar([[1,1],[2,5]])
+      @m2.abs==@m3
+    end
+    it "- Comparador de igualdad" do
+       (@m1==@m1).should eq(true)
+    end
+  end
   
 end
