@@ -31,6 +31,20 @@ def menu2
   z
 end
 
+def menu3
+  z=0
+  while (z<1 or z>2)
+    op=["\tQuiere trabajar con enteros o fracciones?","\t1. Numeros enteros","\t2. Numeros racionales"]
+    op.each{|op| puts op}
+    z=gets.chomp
+    z=z.to_i
+    if (z<1 or z>2)
+      puts ("Escoja una opcion entre [1..2]")
+    end
+  end
+  z
+end
+  
 #Esta funcion la utilizamos para pausar del programa
 def pausa
 #     while line=gets
@@ -38,6 +52,7 @@ def pausa
       break
     end
 end
+
 
 #Ejecucion del programa principal
 def principal
@@ -54,10 +69,7 @@ def principal
 	print "Columnas? "
 	c=gets.chomp
 	a = Matriz.new(f.to_i,c.to_i)
-	puts a.to_s
-	a.introducir_datos
-	puts a.to_s
-	
+# 	puts a.to_s
 	puts "Introduce la dimension de las matriz 2: "
 	print "Filas? "
 	STDOUT.flush
@@ -65,9 +77,19 @@ def principal
 	print "Columnas? "
 	c=gets.chomp
 	b = Matriz.new(f.to_i,c.to_i)
+
+	op3=menu3
+	case op3
+	when 1
+	  a.introducir_datos(1)
+	  b.introducir_datos(1)
+	when 2
+	  a.introducir_datos(2)
+	  b.introducir_datos(2)
+	end
+	puts a.to_s
 	puts b.to_s
-	b.introducir_datos
-	puts b.to_s
+	
       when 2
 	puts "GENERAR MATRICES CON VALORES ALEATORIOS"
 	puts "Introduce la dimension de la matriz 1: "
@@ -77,9 +99,6 @@ def principal
 	print "Columnas? "
 	c=gets.chomp
 	a = Matriz.new(f.to_i,c.to_i)
-	a.generar
-	puts a.to_s
-
 	puts "Introduce la dimension de la matriz 2: "
 	print "Filas? "
 	STDOUT.flush
@@ -87,7 +106,17 @@ def principal
 	print "Columnas? "
 	c=gets.chomp
 	b = Matriz.new(f.to_i,c.to_i)
-	b.generar
+	
+	op3=menu3
+	case op3
+	when 1
+	  a.generar(1)
+	  b.generar(1)
+	when 2
+	  a.generar(2)
+	  b.generar(2)
+	end
+	puts a.to_s
 	puts b.to_s
 
       when 3
@@ -119,6 +148,7 @@ def principal
 		print "Numero a multiplicar?: "
 		STDOUT.flush
 		num=gets.chomp
+# 		c= a.escalar(num.to_i)
 		num = num.to_i
 		c= a*num
 		puts "#{num.to_i} * M1 = M3"
@@ -145,16 +175,14 @@ def principal
 		puts b.to_s
 		puts "traspuesta M2"
 		puts "#{b.t.to_s}"
-
+ 
 		puts "Absoluto de una matriz"
 		puts "M1"
 		puts a.to_s
 		puts "absoluto de M1"
 		puts "#{a.abs.to_s}"
 		pausa
-
 	      when 4
-		puts "Determinante"
 		puts "Determinante"
 		puts "M1"
 		puts a.to_s
@@ -169,6 +197,11 @@ def principal
 	puts a.to_s
 	puts "M2 = "
 	puts b.to_s
+	if a==b
+	  puts "Las matrices son iguales"
+	else
+	  puts "Las matrices son diferentes"
+	end
     end
   pausa
   end

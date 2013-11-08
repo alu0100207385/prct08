@@ -30,6 +30,8 @@ Ficheros:
  - .travis.yml
  - /spec/matriz_spec.rb
  - /lib/matriz.rb
+ - /lib/gcd.rb
+ - /lib/racional.rb
  - /bin/main.rb
 
 

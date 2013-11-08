@@ -1,3 +1,5 @@
+require "./lib/racionales.rb"
+
 class Matriz
   attr_reader :fil, :col, :mat
   
@@ -19,8 +21,22 @@ class Matriz
     puts "\n"
   end
 
-  def generar
-    @mat = Array.new(@fil) {Array.new(@col) {rand(-10..10)}}
+  def generar (o)
+    if (o==1)
+      @mat = Array.new(@fil) {Array.new(@col) {rand(-10..10)}}
+    elsif (o==2)
+      for i in (0...self.fil)
+	for j in (0...self.col)
+	  num = rand(-10..10)
+	  den = 0
+	  while (den==0)
+	    den = rand(-10..10)
+	  end
+	  self.mat[i][j]=NumerosRacionales.new(num.to_i,den.to_i)
+# 	  @mat = Array.new(@fil) {Array.new(@col) {NumerosRacionales.new(num,den)}}
+	end
+      end
+    end
   end
   
   def llenar (other)
@@ -32,29 +48,32 @@ class Matriz
       end
     end
   end
+
   
-  def menu_tipo_datos
-    z=0
-    while (z<1 or z>5)
-      op=["\t1. Numeros enteros","\t2. Numeros racionales"]
-      op.each{|op| puts op}
-      z=gets.chomp
-      z=z.to_i
-      if (z<1 or z>2)
-	puts ("Escoja una opcion entre [1..2]")
-      end
-    end
-    z
-  end
   
-  def introducir_datos
+  def introducir_datos (o)
     puts "Rellene la matriz..."
-    for i in (0...self.fil)
-      for j in (0...self.col)
-	puts "casilla (#{i},#{j}): "
-	STDOUT.flush
-	dato=gets.chomp
-	self.mat[i][j]=dato.to_i
+    if (o==1)
+      for i in (0...self.fil)
+	for j in (0...self.col)
+	  puts "casilla (#{i},#{j}): "
+	  STDOUT.flush
+	  dato=gets.chomp
+	  self.mat[i][j]= dato.to_i
+	end
+      end      
+    elsif
+      for i in (0...self.fil)
+	for j in (0...self.col)
+	  puts "casilla (#{i},#{j}): "
+	  puts "numerador: "
+	  STDOUT.flush
+	  num=gets.chomp
+	  puts "denominador: "
+	  STDOUT.flush
+	  den=gets.chomp
+	  self.mat[i][j]=NumerosRacionales.new(num.to_i,den.to_i)
+	end
       end
     end
   end
@@ -91,9 +110,14 @@ class Matriz
   def *(other) #multiplicacion: segun other -> x escalar o x otra matriz
     nueva = Matriz.new(self.fil,self.col)
     if other.is_a?(Numeric)
+      if (self.mat[0][0]).is_a?(NumerosRacionales)
+	n=NumerosRacionales.new(other,1)
+      else
+	n=other
+      end
       for i in (0...self.fil)
        for j in (0...self.col)
- 	nueva.mat[i][j] = other*self.mat[i][j]
+ 	nueva.mat[i][j] = n*self.mat[i][j]
        end
      end
      nueva
@@ -101,7 +125,11 @@ class Matriz
       if (self.col == other.fil)
 	for i in (0...self.fil)
 	  for j in (0...other.col)
-	    nueva.mat[i][j] = zero
+	    if (self.mat[0][0]).is_a?(NumerosRacionales)
+	      nueva.mat[i][j] = NumerosRacionales.new(0,1)
+	    else
+	      nueva.mat[i][j] = 0
+	    end
 	    for k in (0...self.col)
 	      nueva.mat[i][j] += self.mat[i][k]*other.mat[k][j]
 	    end

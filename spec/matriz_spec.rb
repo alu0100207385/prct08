@@ -1,5 +1,5 @@
 require "./lib/matriz.rb"
-require "./lib/racional.rb"
+# require "./lib/racional.rb"
 
 describe Matriz do
   
@@ -61,12 +61,12 @@ describe Matriz do
       @m3.llenar([[2,1],[0,8]])
       (@m1-@m2).should == @m3
     end
-    it "- Se pueden resta matrices de numeros racionales" do
+    it "- Se pueden restar matrices de numeros racionales" do
       @m3 = Matriz.new(2,2)
       @m6 = Matriz.new(2,2)
       @m3.llenar([[NumerosRacionales.new(1, 2),NumerosRacionales.new(1, 3)],[NumerosRacionales.new(1, 4),NumerosRacionales.new(1, 5)]])
-      @m6.llenar([[NumerosRacionales.new(1, 2),NumerosRacionales.new(2, 3)],[NumerosRacionales.new(3, 4),NumerosRacionales.new(4, 5)]])	
-      (@m3-@m6).should == @m4
+      @m6.llenar([[NumerosRacionales.new(0, 1),NumerosRacionales.new(-4, 15)],[NumerosRacionales.new(-1, 40),NumerosRacionales.new(-19, 150)]])	
+      (@m3-@m5).should == @m6
     end
     it "- Se multiplica un escalar por una matriz de enteros" do
       @m3 = Matriz.new(2,2)
@@ -79,12 +79,10 @@ describe Matriz do
       (@m1*@m2).should == @m3
     end
     it "- Se multiplica un escalar por una matriz de racionales" do
-      @m3 = Matriz.new(2,2)
-      @m6 = Matriz.new(2,2)
-      @m3.llenar([[NumerosRacionales.new(1, 2),NumerosRacionales.new(1, 3)],[NumerosRacionales.new(1, 4),NumerosRacionales.new(1, 5)]])
-      @m6.llenar([[NumerosRacionales.new(2, 2),NumerosRacionales.new(4, 3)],[NumerosRacionales.new(6, 4),NumerosRacionales.new(8, 5)]])
       @escalar = NumerosRacionales.new(2, 1)
-      (@m3*@escalar).should == @m6
+      @m6=Matriz.new(2,2)
+      @m6.llenar([[NumerosRacionales.new(2, 2),NumerosRacionales.new(-8, 15)],[NumerosRacionales.new(22, 40),NumerosRacionales.new(98, 150)]])
+      (@m1*@escalar) == @m6
     end
     it "- Se multiplican dos matrices racionales" do
       @m3 = Matriz.new(2,2)
