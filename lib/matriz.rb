@@ -33,6 +33,20 @@ class Matriz
     end
   end
   
+  def menu_tipo_datos
+    z=0
+    while (z<1 or z>5)
+      op=["\t1. Numeros enteros","\t2. Numeros racionales"]
+      op.each{|op| puts op}
+      z=gets.chomp
+      z=z.to_i
+      if (z<1 or z>2)
+	puts ("Escoja una opcion entre [1..2]")
+      end
+    end
+    z
+  end
+  
   def introducir_datos
     puts "Rellene la matriz..."
     for i in (0...self.fil)
@@ -87,7 +101,7 @@ class Matriz
       if (self.col == other.fil)
 	for i in (0...self.fil)
 	  for j in (0...other.col)
-	    nueva.mat[i][j] = 0
+	    nueva.mat[i][j] = zero
 	    for k in (0...self.col)
 	      nueva.mat[i][j] += self.mat[i][k]*other.mat[k][j]
 	    end
